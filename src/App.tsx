@@ -27,6 +27,7 @@ function App() {
         <div>{task.text}</div>
       ))}
       <div>
+        <h2>Todolist</h2>
         <input value={taskName} onChange={handleChange}></input>
         <button onClick={handleClick}>Ajouter</button>
       </div>
