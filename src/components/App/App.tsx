@@ -3,12 +3,12 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // Internal
-import { Header } from "../Header/Header";
+import { Header } from "../Header";
+import { TodolistComponent } from "../Todolist/Todolist";
 import { WeekDate } from "../WeekDate/WeekDate";
 
 // CSS
 import "./styles.css";
-import { TodolistComponent } from "../Todolist/Todolist";
 
 export interface AppProps {}
 

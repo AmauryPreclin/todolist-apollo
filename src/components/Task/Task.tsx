@@ -2,8 +2,6 @@
 import React from "react";
 import Popup from "reactjs-popup";
 
-// Internal
-
 // CSS
 import "./styles.css";
 
@@ -23,7 +21,7 @@ export interface TaskProps {
  * and buttons to remove, up and down tasks
  */
 const Task: React.FC<TaskProps> = (props) => {
-  let { texte, removeTask, upTask, downTask, index, id } = props;
+  let { downTask, index, id, texte, removeTask, upTask } = props;
 
   const [removeClass, setRemoveClass] = React.useState("");
   const [modifyText, setModifyText] = React.useState(texte);
