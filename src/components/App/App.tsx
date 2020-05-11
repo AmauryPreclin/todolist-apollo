@@ -11,6 +11,7 @@ import { WeekDate } from "../WeekDate/WeekDate";
 
 // CSS
 import "./styles.css";
+import { TodolistComponent } from "../Todolist/Todolist";
 
 export interface AppProps {}
 
@@ -43,14 +44,21 @@ const App: React.FC<AppProps> = () => {
         <Switch>
           <Route path="/">
             <WeekDate />
-            <div>
+            <div id="app-container">
+              <TodolistComponent title="Monday"></TodolistComponent>
+              <TodolistComponent title="Tuesday"></TodolistComponent>
+              <TodolistComponent title="Wednesday"></TodolistComponent>
+              <TodolistComponent title="Thursday"></TodolistComponent>
+              <TodolistComponent title="Friday"></TodolistComponent>
+            </div>
+            {/*<div>
               <h2>Todolist</h2>
               {todolist.tasks.map((task) => (
                 <div>{task.text}</div>
               ))}
               <input value={taskName} onChange={handleChange}></input>
               <button onClick={handleClick}>Ajouter</button>
-            </div>
+              </div>*/}
           </Route>
         </Switch>
       </Router>

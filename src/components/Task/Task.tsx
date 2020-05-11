@@ -10,7 +10,8 @@ import "./styles.css";
 export interface TaskProps {
   texte: string;
   index: number;
-  id: string;
+  id?: string;
+  key: number;
   removeTask: Function;
   upTask: Function;
   downTask: Function;

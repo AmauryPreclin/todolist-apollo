@@ -15,7 +15,6 @@ const AddTask: React.FC<AddTaskProps> = (props) => {
 
   // Hooks
   const [taskName, setTaskName] = React.useState("");
-  const [id, setId] = React.useState(0);
 
   // Handlers
   const handleChange = (event: any) => {
@@ -23,9 +22,8 @@ const AddTask: React.FC<AddTaskProps> = (props) => {
   };
 
   const handleClick = () => {
-    if (taskName) addTask(taskName, id);
+    if (taskName) addTask({ variables: { text: taskName } });
     setTaskName("");
-    setId(id + 1);
   };
 
   return (
