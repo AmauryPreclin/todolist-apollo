@@ -4,10 +4,10 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { useMutation, useQuery } from "@apollo/react-hooks";
 
 // Internal
-import { GET_TODOLIST, ADD_TASK } from "../../types/graphql";
-import { Header } from "../Header/Header";
+import { Header } from "../Header";
 import { Todolist } from "../../types/todolist";
 import { WeekDate } from "../WeekDate/WeekDate";
+import { ADD_TASK, GET_TODOLIST } from "../../types/graphql";
 
 // CSS
 import "./styles.css";

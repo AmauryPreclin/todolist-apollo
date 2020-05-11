@@ -1,17 +1,13 @@
 // Vendor
 import React from "react";
 
-// Internal
-
-// CSS
-
 export interface AddTaskProps {
-  title: string;
   addTask: Function;
+  title: string;
 }
 
 const AddTask: React.FC<AddTaskProps> = (props) => {
-  const { title, addTask } = props;
+  const { addTask, title } = props;
 
   // Hooks
   const [taskName, setTaskName] = React.useState("");
