@@ -1,0 +1,18 @@
+.todolist {
+  flex-direction: column;
+  margin: 5px;
+  max-width: 200px;
+}
+
+h2 {
+  text-align: center;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.todolistAlone {
+  display: flex;
+  justify-content: flex-end;
+}

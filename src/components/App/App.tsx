@@ -26,7 +26,7 @@ const App: React.FC<AppProps> = () => {
   // Hooks
   const [taskName, setTaskName]: any = React.useState("");
 
-  // Setup
+  // Handlers
   const handleClick = () => {
     if (taskName) addTask({ variables: { text: taskName } });
     setTaskName("");
