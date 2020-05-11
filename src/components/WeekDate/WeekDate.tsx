@@ -8,6 +8,10 @@ import "./styles.css";
 
 export interface WeekDateProps {}
 
+/**
+ * @name WeekDate
+ * @description display date of the week from monday to friday
+ */
 const WeekDate: React.FC<WeekDateProps> = () => {
   const curr = new Date();
   const first = curr.getDate() - curr.getDay() + 1;

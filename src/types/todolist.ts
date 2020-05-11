@@ -4,4 +4,5 @@ export interface Todolist {
 
 export interface Task {
   text: string;
+  id: number;
 }

@@ -5,7 +5,7 @@ import { useMutation, useQuery } from "@apollo/react-hooks";
 
 // Internal
 import { AddTask } from "../AddTask/AddTask";
-import { ADD_TASK, GET_TODOLIST } from "../../types/graphql";
+import { ADD_TASK, GET_TODOLIST, REMOVE_TASK } from "../../types/graphql";
 import { Task } from "../Task/Task";
 import { Todolist } from "../../types/todolist";
 
@@ -17,6 +17,10 @@ export interface TodolistProps {
   className?: string;
 }
 
+/**
+ * @name TodolistComponent
+ * @description Todolist Component, contains some tasks (Task) and a form to add tasks
+ */
 const TodolistComponent: React.FC<TodolistProps> = (props) => {
   const { title, className } = props;
   let { day } = useParams();
@@ -33,8 +37,7 @@ const TodolistComponent: React.FC<TodolistProps> = (props) => {
   const { data } = useQuery(GET_TODOLIST);
   const todolist: Todolist = data.todolist;
   const [addTask] = useMutation(ADD_TASK);
-
-  const removeTask = (index: number) => {};
+  const [removeTask] = useMutation(REMOVE_TASK);
 
   const upTask = (index: number) => {};
 

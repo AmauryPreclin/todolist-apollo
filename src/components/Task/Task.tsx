@@ -17,6 +17,11 @@ export interface TaskProps {
   downTask: Function;
 }
 
+/**
+ * @name Task
+ * @description Task component, part of the todolist, contains a text to do...
+ * and buttons to remove, up and down tasks
+ */
 const Task: React.FC<TaskProps> = (props) => {
   let { texte, removeTask, upTask, downTask, index, id } = props;
 

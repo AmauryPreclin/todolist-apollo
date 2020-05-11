@@ -10,6 +10,10 @@ export interface AddTaskProps {
   addTask: Function;
 }
 
+/**
+ * @name AddTask
+ * @description Form to add task
+ */
 const AddTask: React.FC<AddTaskProps> = (props) => {
   const { title, addTask } = props;
 
@@ -22,8 +26,10 @@ const AddTask: React.FC<AddTaskProps> = (props) => {
   };
 
   const handleClick = () => {
-    if (taskName) addTask({ variables: { text: taskName } });
-    setTaskName("");
+    if (taskName) {
+      addTask({ variables: { text: taskName } });
+      setTaskName("");
+    }
   };
 
   return (
