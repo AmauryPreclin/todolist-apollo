@@ -1,5 +1,8 @@
-import { GET_TODOLIST } from "../../types/graphql";
+// Vendor
 import { merge } from "lodash";
+
+// Internal
+import { GET_TODOLIST } from "../../../types/graphql";
 
 const addTask = (_: any, { text }: any, { cache }: any) => {
   const resultCache = cache.readQuery({ query: GET_TODOLIST });

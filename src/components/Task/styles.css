@@ -1,0 +1,44 @@
+.taskButton:hover {
+  cursor: pointer;
+}
+
+.taskButton {
+  display: flex;
+  justify-content: space-between;
+}
+
+.task:hover {
+  border: black solid 1px;
+}
+
+.task {
+  animation-name: opacity;
+  animation-duration: 2s;
+}
+
+.divClick:hover {
+  cursor: pointer;
+}
+
+@keyframes opacity {
+  from {
+    opacity: 0%;
+  }
+  to {
+    opacity: 100%;
+  }
+}
+
+.remove-task {
+  animation-name: remove-task;
+  animation-duration: 2s;
+}
+
+@keyframes remove-task {
+  from {
+    opacity: 100%;
+  }
+  to {
+    opacity: 0%;
+  }
+}

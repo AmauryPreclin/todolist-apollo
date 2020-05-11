@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
+import { App } from "./components/App/App";
 import * as serviceWorker from "./serviceWorker";
 
 import { ApolloProvider } from "@apollo/react-hooks";
-import { client } from "./apollo";
+import { client } from "./apollo/apollo";
 
 ReactDOM.render(
   <React.StrictMode>

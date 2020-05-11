@@ -1,8 +1,11 @@
+// Vendor
 import { ApolloClient } from "apollo-client";
 import { InMemoryCache } from "apollo-cache-inmemory";
+
+// Internal
 import { resolvers } from "./resolvers/index";
-import { typeDefs } from "./types/graphql";
-import { GET_TODOLIST } from "./types/graphql";
+import { typeDefs } from "../types/graphql";
+import { GET_TODOLIST } from "../types/graphql";
 
 const cache = new InMemoryCache();
 export const client = new ApolloClient({
