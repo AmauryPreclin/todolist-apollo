@@ -1,0 +1,22 @@
+.header {
+  display: flex;
+  justify-content: center;
+  flex-basis: 20%;
+  border-right: none;
+  align-items: center;
+}
+
+.link:last-child {
+  border-right: 1px solid black;
+}
+
+.link {
+  border: 1px solid black;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-right: none;
+}
+
+.link:hover {
+  background-color: silver;
+}
