@@ -8,11 +8,12 @@ import "./styles.css";
 export interface TaskProps {
   texte: string;
   index: number;
-  id?: string;
+  id?: number;
   key: number;
   removeTask: Function;
   upTask: Function;
   downTask: Function;
+  title: string;
 }
 
 /**
@@ -21,7 +22,7 @@ export interface TaskProps {
  * and buttons to remove, up and down tasks
  */
 const Task: React.FC<TaskProps> = (props) => {
-  let { downTask, index, id, texte, removeTask, upTask } = props;
+  let { downTask, index, id, texte, removeTask, upTask, title } = props;
 
   const [removeClass, setRemoveClass] = React.useState("");
   const [modifyText, setModifyText] = React.useState(texte);
@@ -30,7 +31,7 @@ const Task: React.FC<TaskProps> = (props) => {
   const handleClickRemove = () => {
     setRemoveClass(" remove-task");
     setTimeout(() => {
-      removeTask(index);
+      removeTask({ variables: { id: id, title: title } });
     }, 1999);
   };
 
@@ -51,7 +52,7 @@ const Task: React.FC<TaskProps> = (props) => {
   };
 
   return (
-    <div id={id} className={`task${removeClass}`}>
+    <div className={`task${removeClass}`}>
       <Popup
         trigger={<div className="divClick">{modifyText}</div>}
         position="right center"

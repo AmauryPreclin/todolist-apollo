@@ -48,6 +48,7 @@ const Todolist: React.FC<TodolistProps> = (props) => {
       if (data.todolists[index]["todolist"]["title"] === day)
         indexTodolist = index;
     }
+    //console.log(data.todolists[indexTodolist]["todolist"].tasks);
     return data.todolists[
       indexTodolist
     ].todolist.tasks.map((task: TaskType, index: number) => (
@@ -58,6 +59,8 @@ const Todolist: React.FC<TodolistProps> = (props) => {
         removeTask={removeTask}
         upTask={upTask}
         downTask={downTask}
+        id={task.id}
+        title={day}
       />
     ));
   };
