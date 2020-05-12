@@ -15,10 +15,48 @@ export const client = new ApolloClient({
 });
 
 const data = {
-  todolist: {
-    __typename: "Todolist",
-    tasks: [],
-  },
+  todolists: [
+    {
+      __typename: "Todolists",
+      todolist: {
+        __typename: "Todolist",
+        title: "monday",
+        tasks: [],
+      },
+    },
+    {
+      __typename: "Todolists",
+      todolist: {
+        __typename: "Todolist",
+        title: "tuesday",
+        tasks: [],
+      },
+    },
+    {
+      __typename: "Todolists",
+      todolist: {
+        __typename: "Todolist",
+        title: "wednesday",
+        tasks: [],
+      },
+    },
+    {
+      __typename: "Todolists",
+      todolist: {
+        __typename: "Todolist",
+        title: "thursday",
+        tasks: [],
+      },
+    },
+    {
+      __typename: "Todolists",
+      todolist: {
+        __typename: "Todolist",
+        title: "friday",
+        tasks: [],
+      },
+    },
+  ],
 };
 
 client.writeQuery({ query: GET_TODOLIST, data });

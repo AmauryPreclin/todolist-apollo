@@ -2,16 +2,20 @@ import gql from "graphql-tag";
 
 export const GET_TODOLIST = gql`
   query TodolistQuery {
-    todolist @client {
-      tasks
+    todolists @client {
+      todolist {
+        title
+        tasks
+      }
     }
   }
 `;
 
 export const ADD_TASK = gql`
-  mutation addTask($text: String, $id: number) {
-    addTask(text: $text, id: $id) @client {
+  mutation addTask($text: String, $id: number, $title: string) {
+    addTask(text: $text, id: $id, title: $title) @client {
       todolist {
+        title
         tasks
       }
     }
@@ -22,6 +26,7 @@ export const REMOVE_TASK = gql`
   mutation removeTask($id: number) {
     removeTask(id: $id) @client {
       todolist {
+        title
         tasks
       }
     }
@@ -29,15 +34,12 @@ export const REMOVE_TASK = gql`
 `;
 
 export const typeDefs = gql`
-  type Week {
-    monday: Todolist
-    tuesday: Todolist
-    wednesday: Todolist
-    thursday: Todolist
-    friday: Todolist
+  type Todolists {
+    todolists: [Todolist]
   }
 
   type Todolist {
+    title: string
     tasks: [Task]
   }
 

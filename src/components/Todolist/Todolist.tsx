@@ -7,7 +7,7 @@ import { useMutation, useQuery } from "@apollo/react-hooks";
 import { AddTask } from "../AddTask/AddTask";
 import { ADD_TASK, GET_TODOLIST, REMOVE_TASK } from "../../types/graphql";
 import { Task } from "../Task/Task";
-import { Todolist } from "../../types/todolist";
+import { Task as TaskType } from "../../types/todolist";
 
 // CSS
 import "./styles.css";
@@ -18,10 +18,10 @@ export interface TodolistProps {
 }
 
 /**
- * @name TodolistComponent
+ * @name Todolist
  * @description Todolist Component, contains some tasks (Task) and a form to add tasks
  */
-const TodolistComponent: React.FC<TodolistProps> = (props) => {
+const Todolist: React.FC<TodolistProps> = (props) => {
   const { title, className } = props;
   let { day } = useParams();
   if (title) {
@@ -35,7 +35,6 @@ const TodolistComponent: React.FC<TodolistProps> = (props) => {
 
   // Markup
   const { data } = useQuery(GET_TODOLIST);
-  const todolist: Todolist = data.todolist;
   const [addTask] = useMutation(ADD_TASK);
   const [removeTask] = useMutation(REMOVE_TASK);
 
@@ -44,7 +43,14 @@ const TodolistComponent: React.FC<TodolistProps> = (props) => {
   const downTask = (index: number) => {};
 
   const renderTasks = () => {
-    return todolist.tasks.map((task, index) => (
+    let indexTodolist = "";
+    for (const index in data.todolists) {
+      if (data.todolists[index]["todolist"]["title"] === day)
+        indexTodolist = index;
+    }
+    return data.todolists[
+      indexTodolist
+    ].todolist.tasks.map((task: TaskType, index: number) => (
       <Task
         texte={task.text}
         index={index}
@@ -65,4 +71,4 @@ const TodolistComponent: React.FC<TodolistProps> = (props) => {
   );
 };
 
-export { TodolistComponent };
+export { Todolist };

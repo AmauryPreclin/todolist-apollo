@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // Internal
 import { Header } from "../Header";
-import { TodolistComponent } from "../Todolist/Todolist";
+import { Todolist } from "../Todolist/Todolist";
 import { WeekDate } from "../WeekDate/WeekDate";
 
 // CSS
@@ -29,11 +29,11 @@ const App: React.FC<AppProps> = () => {
           <Route path="/">
             <WeekDate />
             <div id="app-container">
-              <TodolistComponent title="Monday"></TodolistComponent>
-              <TodolistComponent title="Tuesday"></TodolistComponent>
-              <TodolistComponent title="Wednesday"></TodolistComponent>
-              <TodolistComponent title="Thursday"></TodolistComponent>
-              <TodolistComponent title="Friday"></TodolistComponent>
+              <Todolist title="Monday"></Todolist>
+              <Todolist title="Tuesday"></Todolist>
+              <Todolist title="Wednesday"></Todolist>
+              <Todolist title="Thursday"></Todolist>
+              <Todolist title="Friday"></Todolist>
             </div>
             {/*<div>
               <h2>Todolist</h2>

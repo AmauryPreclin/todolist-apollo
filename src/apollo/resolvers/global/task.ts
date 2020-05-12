@@ -4,21 +4,26 @@ import { merge } from "lodash";
 // Internal
 import { GET_TODOLIST } from "../../../types/graphql";
 
-const addTask = (_: any, { text }: any, { cache }: any) => {
+const addTask = (_: any, { text, id, title }: any, { cache }: any) => {
   const resultCache = cache.readQuery({ query: GET_TODOLIST });
+  let indexTodolist = "";
+  for (const index in resultCache.todolists) {
+    if (resultCache.todolists[index].todolist["title"] === title)
+      indexTodolist = index;
+  }
   const newData = {
     todolist: {
       tasks: [
-        ...resultCache.todolist.tasks,
+        ...resultCache.todolists[indexTodolist].todolist.tasks,
         {
           __typename: "Task",
           text: text,
-          id: resultCache.todolist.tasks.length,
+          id: id,
         },
       ],
     },
   };
-  const data = merge({}, resultCache, newData);
+  const data = merge(resultCache.todolists[indexTodolist], newData);
   cache.writeQuery({ query: GET_TODOLIST, data });
 
   return data;
@@ -26,18 +31,8 @@ const addTask = (_: any, { text }: any, { cache }: any) => {
 
 const removeTask = (_: any, { text, id }: any, { cache }: any) => {
   const resultCache = cache.readQuery({ query: GET_TODOLIST });
-  const newData = {
-    todolist: {
-      tasks: [
-        ...resultCache.todolist.tasks,
-        { __typename: "Task", text: text, id: id },
-      ],
-    },
-  };
-  const data = merge({}, resultCache, newData);
-  cache.writeQuery({ query: GET_TODOLIST, data });
 
-  return data;
+  return null;
 };
 
 export { addTask, removeTask };

@@ -1,4 +1,9 @@
+export interface Todolists {
+  todolists: Todolist[];
+}
+
 export interface Todolist {
+  title: string;
   tasks: Task[];
 }
 
