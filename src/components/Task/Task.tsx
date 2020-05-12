@@ -9,6 +9,7 @@ export interface TaskProps {
   texte: string;
   id: number;
   key: string;
+  modifyTask: Function;
   removeTask: Function;
   upTask: Function;
   downTask: Function;
@@ -21,7 +22,7 @@ export interface TaskProps {
  * and buttons to remove, up and down tasks
  */
 const Task: React.FC<TaskProps> = (props) => {
-  let { downTask, id, texte, removeTask, upTask, title } = props;
+  let { downTask, id, texte, modifyTask, removeTask, upTask, title } = props;
 
   const [removeClass, setRemoveClass] = React.useState("");
   const [modifyText, setModifyText] = React.useState(texte);
@@ -36,6 +37,8 @@ const Task: React.FC<TaskProps> = (props) => {
 
   const handleClickModifyText = () => {
     if (taskName) setModifyText(taskName);
+    // update cache
+    modifyTask({ variables: { id: id, title: title, text: taskName } });
   };
 
   const handleChangeModifyText = (event: any) => {

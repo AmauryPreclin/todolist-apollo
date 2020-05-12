@@ -5,7 +5,12 @@ import { useMutation, useQuery } from "@apollo/react-hooks";
 
 // Internal
 import { AddTask } from "../AddTask/AddTask";
-import { ADD_TASK, GET_TODOLIST, REMOVE_TASK } from "../../types/graphql";
+import {
+  ADD_TASK,
+  GET_TODOLIST,
+  MODIFY_TASK,
+  REMOVE_TASK,
+} from "../../types/graphql";
 import { Task } from "../Task/Task";
 import { Task as TaskType } from "../../types/todolist";
 
@@ -37,6 +42,7 @@ const Todolist: React.FC<TodolistProps> = (props) => {
   const { data } = useQuery(GET_TODOLIST);
   const [addTask] = useMutation(ADD_TASK);
   const [removeTask] = useMutation(REMOVE_TASK);
+  const [modifyTask] = useMutation(MODIFY_TASK);
 
   const upTask = (index: number) => {};
 
@@ -58,6 +64,7 @@ const Todolist: React.FC<TodolistProps> = (props) => {
             texte={text}
             key={key}
             removeTask={removeTask}
+            modifyTask={modifyTask}
             upTask={upTask}
             downTask={downTask}
             id={id}

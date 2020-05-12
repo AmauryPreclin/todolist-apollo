@@ -30,6 +30,25 @@ const addTask = (_: any, { text, id, title }: any, { cache }: any) => {
   return data;
 };
 
+const modifyTask = (_: any, { text, id, title }: any, { cache }: any) => {
+  const resultCache = cache.readQuery({ query: GET_TODOLIST });
+  let indexTodolist = "";
+  let indexTask = "";
+  for (const index in resultCache.todolists) {
+    if (resultCache.todolists[index].todolist["title"] === title)
+      indexTodolist = index;
+  }
+  for (const index in resultCache.todolists[indexTodolist].todolist.tasks) {
+    if (resultCache.todolists[indexTodolist].todolist.tasks[index]["id"] === id)
+      indexTask = index;
+  }
+  const data = { ...resultCache };
+  data.todolists[indexTodolist].todolist.tasks[indexTask]["text"] = text;
+  cache.writeQuery({ query: GET_TODOLIST, data });
+
+  return data;
+};
+
 const removeTask = (_: any, { id, title }: any, { cache }: any) => {
   const resultCache = cache.readQuery({ query: GET_TODOLIST });
   let indexTodolist = "";
@@ -47,4 +66,4 @@ const removeTask = (_: any, { id, title }: any, { cache }: any) => {
   return data;
 };
 
-export { addTask, removeTask };
+export { addTask, modifyTask, removeTask };

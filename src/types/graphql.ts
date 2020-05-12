@@ -24,6 +24,19 @@ export const ADD_TASK = gql`
   }
 `;
 
+export const MODIFY_TASK = gql`
+  mutation modifyTask($text: String, $id: number, $title: string) {
+    modifyTask(text: $text, id: $id, title: $title) @client {
+      todolists {
+        todolist {
+          title
+          tasks
+        }
+      }
+    }
+  }
+`;
+
 export const REMOVE_TASK = gql`
   mutation removeTask($id: number, $title: string) {
     removeTask(id: $id, title: $title) @client {
