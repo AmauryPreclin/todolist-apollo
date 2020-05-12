@@ -38,9 +38,7 @@ const removeTask = (_: any, { id, title }: any, { cache }: any) => {
       indexTodolist = index;
   }
   let data = { ...resultCache };
-  let memes = remove(data.todolists[indexTodolist].todolist.tasks, function (
-    task: Task
-  ) {
+  remove(data.todolists[indexTodolist].todolist.tasks, function (task: Task) {
     return task.id === id;
   });
   console.log("removeTask -> data", data);
