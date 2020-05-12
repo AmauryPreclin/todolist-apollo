@@ -48,18 +48,24 @@ const Todolist: React.FC<TodolistProps> = (props) => {
       if (data.todolists[index]["todolist"]["title"] === day)
         indexTodolist = index;
     }
-    return data.todolists[
-      indexTodolist
-    ].todolist.tasks.map((task: TaskType, index: number) => (
-      <Task
-        texte={task.text}
-        index={index}
-        key={index}
-        removeTask={removeTask}
-        upTask={upTask}
-        downTask={downTask}
-      />
-    ));
+    //console.log(data.todolists[indexTodolist]["todolist"].tasks);
+    return data.todolists[indexTodolist].todolist.tasks.map(
+      (task: TaskType, index: number) => {
+        const { id, text } = task;
+        const key = `${id}-${title}-${text}`;
+        return (
+          <Task
+            texte={text}
+            key={key}
+            removeTask={removeTask}
+            upTask={upTask}
+            downTask={downTask}
+            id={id}
+            title={day}
+          />
+        );
+      }
+    );
   };
 
   return (
