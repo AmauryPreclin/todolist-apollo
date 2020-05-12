@@ -6,12 +6,16 @@ export interface AddTaskProps {
   title: string;
 }
 
+/**
+ * @name AddTask
+ * @description Form to add task
+ */
 const AddTask: React.FC<AddTaskProps> = (props) => {
   const { addTask, title } = props;
 
   // Hooks
   const [taskName, setTaskName] = React.useState("");
-  const [id, setId] = React.useState(0);
+  const [taskId, setTaskId] = React.useState(0);
 
   // Handlers
   const handleChange = (event: any) => {
@@ -19,9 +23,11 @@ const AddTask: React.FC<AddTaskProps> = (props) => {
   };
 
   const handleClick = () => {
-    if (taskName) addTask(taskName, id);
-    setTaskName("");
-    setId(id + 1);
+    if (taskName) {
+      addTask({ variables: { text: taskName, id: taskId, title: title } });
+      setTaskName("");
+      setTaskId(taskId + 1);
+    }
   };
 
   return (

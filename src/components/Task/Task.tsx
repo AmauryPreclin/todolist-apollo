@@ -8,12 +8,18 @@ import "./styles.css";
 export interface TaskProps {
   texte: string;
   index: number;
-  id: string;
+  id?: string;
+  key: number;
   removeTask: Function;
   upTask: Function;
   downTask: Function;
 }
 
+/**
+ * @name Task
+ * @description Task component, part of the todolist, contains a text to do...
+ * and buttons to remove, up and down tasks
+ */
 const Task: React.FC<TaskProps> = (props) => {
   let { downTask, index, id, texte, removeTask, upTask } = props;
 
