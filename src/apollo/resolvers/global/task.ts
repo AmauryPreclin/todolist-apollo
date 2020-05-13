@@ -2,7 +2,7 @@
 import { merge, remove } from "lodash";
 
 // Internal
-import { Task, Todolists } from "../../../types/todolist";
+import { Task } from "../../../types/todolist";
 import { GET_TODOLIST } from "../../../types/graphql";
 
 const addTask = (_: any, { text, id, title }: any, { cache }: any) => {
