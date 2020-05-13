@@ -66,4 +66,37 @@ const removeTask = (_: any, { id, title }: any, { cache }: any) => {
   return data;
 };
 
-export { addTask, modifyTask, removeTask };
+const upOrDownTask = (_: any, { id, title, upOrDown }: any, { cache }: any) => {
+  const resultCache = cache.readQuery({ query: GET_TODOLIST });
+  let indexTodolist = 0;
+  let indexTask = 0;
+  for (const index in resultCache.todolists) {
+    if (resultCache.todolists[index].todolist["title"] === title)
+      indexTodolist = parseInt(index);
+  }
+  for (const index in resultCache.todolists[indexTodolist].todolist.tasks) {
+    if (resultCache.todolists[indexTodolist].todolist.tasks[index]["id"] === id)
+      indexTask = parseInt(index);
+  }
+  let data = { ...resultCache };
+  let dataSwap = data.todolists[indexTodolist].todolist.tasks;
+  if (upOrDown === "up") {
+    if (indexTask === 0) return;
+    [dataSwap[indexTask], dataSwap[indexTask - 1]] = [
+      dataSwap[indexTask - 1],
+      dataSwap[indexTask],
+    ];
+    cache.writeQuery({ query: GET_TODOLIST, data });
+  } else {
+    if (indexTask === dataSwap.length - 1) return;
+    [dataSwap[indexTask], dataSwap[indexTask + 1]] = [
+      dataSwap[indexTask + 1],
+      dataSwap[indexTask],
+    ];
+    cache.writeQuery({ query: GET_TODOLIST, data });
+  }
+
+  return data;
+};
+
+export { addTask, modifyTask, removeTask, upOrDownTask };
