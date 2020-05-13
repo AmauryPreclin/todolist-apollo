@@ -11,8 +11,7 @@ export interface TaskProps {
   key: string;
   modifyTask: Function;
   removeTask: Function;
-  upTask: Function;
-  downTask: Function;
+  upOrDownTask: Function;
   title: string;
 }
 
@@ -22,7 +21,7 @@ export interface TaskProps {
  * and buttons to remove, up and down tasks
  */
 const Task: React.FC<TaskProps> = (props) => {
-  let { downTask, id, texte, modifyTask, removeTask, upTask, title } = props;
+  let { id, modifyTask, removeTask, texte, title, upOrDownTask } = props;
 
   const [removeClass, setRemoveClass] = React.useState("");
   const [modifyText, setModifyText] = React.useState(texte);
@@ -35,6 +34,7 @@ const Task: React.FC<TaskProps> = (props) => {
     }, 1999);
   };
 
+  // Handlers
   const handleClickModifyText = () => {
     if (taskName) setModifyText(taskName);
     // update cache
@@ -43,6 +43,14 @@ const Task: React.FC<TaskProps> = (props) => {
 
   const handleChangeModifyText = (event: any) => {
     setTaskName(event.target.value);
+  };
+
+  const handleClickUp = () => {
+    upOrDownTask({ variables: { id: id, title: title, upOrDown: "up" } });
+  };
+
+  const handleClickDown = () => {
+    upOrDownTask({ variables: { id: id, title: title, upOrDown: "down" } });
   };
 
   return (
@@ -61,8 +69,8 @@ const Task: React.FC<TaskProps> = (props) => {
 
       <div className="taskButton">
         <button onClick={handleClickRemove}>Remove task</button>
-        <button>Up</button>
-        <button>Down</button>
+        <button onClick={handleClickUp}>Up</button>
+        <button onClick={handleClickDown}>Down</button>
       </div>
     </div>
   );

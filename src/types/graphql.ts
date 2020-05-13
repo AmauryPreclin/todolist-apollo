@@ -50,6 +50,19 @@ export const REMOVE_TASK = gql`
   }
 `;
 
+export const UP_OR_DOWN_TASK = gql`
+  mutation upOrDownTask($id: number, $title: string, $upOrDown: string) {
+    upOrDownTask(id: $id, title: $title, upOrDown: $upOrDown) @client {
+      todolists {
+        todolist {
+          title
+          tasks
+        }
+      }
+    }
+  }
+`;
+
 export const typeDefs = gql`
   type Todolists {
     todolists: [Todolist]

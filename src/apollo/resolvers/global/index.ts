@@ -1,9 +1,10 @@
-import { addTask, modifyTask, removeTask } from "./task";
+import { addTask, modifyTask, removeTask, upOrDownTask } from "./task";
 
 const Mutation = {
   addTask,
   removeTask,
   modifyTask,
+  upOrDownTask,
 };
 
 export { Mutation };
