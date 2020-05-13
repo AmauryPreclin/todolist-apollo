@@ -26,6 +26,9 @@ const App: React.FC<AppProps> = () => {
       <Router>
         <Header />
         <Switch>
+          <Route path="/:day">
+            <Todolist className="todolistAlone" />
+          </Route>
           <Route path="/">
             <WeekDate />
             <div id="app-container">

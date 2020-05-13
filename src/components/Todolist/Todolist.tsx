@@ -19,7 +19,7 @@ import { Task as TaskType } from "../../types/todolist";
 import "./styles.css";
 
 export interface TodolistProps {
-  title: string;
+  title?: string;
   className?: string;
 }
 
@@ -56,7 +56,8 @@ const Todolist: React.FC<TodolistProps> = (props) => {
     return data.todolists[indexTodolist].todolist.tasks.map(
       (task: TaskType, index: number) => {
         const { id, text } = task;
-        const key = `${id}-${title}-${text}`;
+        const now = window.performance.now();
+        let key = `${id}-${day}-${text}-${now}`;
         return (
           <Task
             texte={text}

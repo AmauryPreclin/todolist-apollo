@@ -60,7 +60,6 @@ const removeTask = (_: any, { id, title }: any, { cache }: any) => {
   remove(data.todolists[indexTodolist].todolist.tasks, function (task: Task) {
     return task.id === id;
   });
-  console.log("removeTask -> data", data);
   cache.writeQuery({ query: GET_TODOLIST, data });
 
   return data;

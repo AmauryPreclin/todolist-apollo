@@ -7,7 +7,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { Header } from "../Header";
 
 describe("renders Header component", () => {
-  const { getAllByRole, getAllByText } = render(
+  const { getAllByRole } = render(
     <Router>
       <Header />
     </Router>
